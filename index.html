@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apply to Jiffy Lube | Carolinas</title>
-<meta name="description" content="Apply to work at a Jiffy Lube in North or South Carolina. Pick a store, add your resume, and your application goes straight to the store and district manager.">
+<meta name="description" content="Apply to work at a Jiffy Lube in North or South Carolina.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
@@ -59,10 +59,9 @@
   .brand img { display: block; height: 40px; width: auto; }
   h1 {
     font: 800 clamp(38px, 9vw, 60px)/.95 var(--display);
-    margin: 0 0 14px;
+    margin: 0;
     letter-spacing: -.01em;
   }
-  .lede { margin: 0; max-width: 34em; font-size: 18px; color: #FFE9EC; }
 
   /* ---------- Form shell ---------- */
   main { max-width: 640px; margin: -56px auto 48px; padding: 0 16px; position: relative; }
@@ -207,7 +206,6 @@
   button.primary:hover { background: #B30E29; }
   button.primary:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--red-deep); }
   button.primary[disabled] { opacity: .7; cursor: progress; }
-  .fine { font-size: 14px; color: var(--ink-soft); margin: 14px 0 0; }
   .form-error {
     margin-top: 18px; padding: 12px 14px;
     background: #FDECEE; color: var(--red-deep);
@@ -240,7 +238,6 @@
   <div class="masthead-inner">
     <p class="brand">Jiffy Lube · Carolinas<!-- To show a logo instead, replace this text with <img src="data:image/png;base64,..." alt="Jiffy Lube"> --></p>
     <h1>Come work on our team</h1>
-    <p class="lede">22 stores across North and South Carolina. Pick the one you want to work at, add your resume, and it goes straight to that store's manager.</p>
   </div>
 </header>
 
@@ -320,7 +317,6 @@
 
     <div class="actions">
       <button type="submit" class="primary" id="submitBtn">Send application</button>
-      <p class="fine">Your application goes only to the store you picked and its district manager.</p>
       <div class="form-error" id="formError" role="alert" hidden></div>
     </div>
   </form>
@@ -329,7 +325,6 @@
     <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></div>
     <h2>Application sent</h2>
     <p id="doneMsg"></p>
-    <p>If you're a fit, the manager will call or email you. You don't need to apply again.</p>
   </section>
 </main>
 
@@ -580,7 +575,7 @@ form.addEventListener("submit", async (e) => {
     const data = await resp.json().catch(() => ({}));
     if (!resp.ok || !data.ok) throw new Error(data.error || "send failed");
 
-    $("doneMsg").textContent = `Thanks, ${v.firstName}. Your application went to the manager at Jiffy Lube #${selected.n} on ${selected.street} in ${selected.city}.`;
+    $("doneMsg").textContent = `Thanks, ${v.firstName}. If you're a good fit, you'll receive a call or email.`;
     form.hidden = true;
     $("done").hidden = false;
     $("done").focus();
